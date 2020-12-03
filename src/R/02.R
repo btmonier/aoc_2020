@@ -37,7 +37,7 @@
 
 ## Data cleanup ----
 passwords <- read.table(
-    file = here::here("../input/02.txt"),
+    file = here::here("input/01.txt"),
     sep = " "
 )
 passwords <- cbind(

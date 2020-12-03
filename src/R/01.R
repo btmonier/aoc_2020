@@ -42,13 +42,13 @@
 
 
 input <- scan(
-    file = here::here("../input/01.txt"),
+    file = here::here("input/01.txt"),
     what = integer()
 )
 
 pairs <- combn(input, 2)
 sums <- apply(pairs, 2, sum)
-answer <- Reduce(`*`, pairs[, sums == 2020])
+answerP1 <- Reduce(`*`, pairs[, sums == 2020])
 
 
 
@@ -67,7 +67,7 @@ answer <- Reduce(`*`, pairs[, sums == 2020])
 
 pairs <- combn(input, 3)
 sums <- apply(pairs, 2, sum)
-answer <- Reduce(`*`, pairs[, sums == 2020])
+answerP2 <- Reduce(`*`, pairs[, sums == 2020])
 
 
 

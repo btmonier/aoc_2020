@@ -72,7 +72,7 @@
 # === Part 1 ========================================================
 
 input <- scan(
-    file = here::here("../input/03.txt"),
+    file = here::here("input/01.txt"),
     what = character()
 )
 
