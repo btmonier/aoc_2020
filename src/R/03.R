@@ -72,7 +72,7 @@
 # === Part 1 ========================================================
 
 input <- scan(
-    file = here::here("input/01.txt"),
+    file = here::here("input/03.txt"),
     what = character()
 )
 
@@ -146,5 +146,9 @@ answerP2 <- Reduce(
         treeChecker(1, 1)
     )
 )
+
+
+cat("Answer for part 1:", answerP1, "\n")
+cat("Answer for part 2:", answerP2, "\n")
 
 

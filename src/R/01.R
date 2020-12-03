@@ -70,6 +70,7 @@ sums <- apply(pairs, 2, sum)
 answerP2 <- Reduce(`*`, pairs[, sums == 2020])
 
 
-
+cat("Answer for part 1:", answerP1, "\n")
+cat("Answer for part 2:", answerP2, "\n")
 
 

@@ -37,7 +37,7 @@
 
 ## Data cleanup ----
 passwords <- read.table(
-    file = here::here("input/01.txt"),
+    file = here::here("input/02.txt"),
     sep = " "
 )
 passwords <- cbind(
@@ -62,7 +62,7 @@ passwordChecker <- function(x) {
 
 ## Get answer ----
 results <- apply(passwords, 1, passwordChecker)
-answer <- length(results[results])
+answerP1 <- length(results[results])
 
 
 
@@ -111,6 +111,10 @@ positionChecker <- function(x) {
 
 ## Get answer ----
 results <- apply(passwords, 1, positionChecker)
-answer <- length(results[results])
+answerP2 <- length(results[results])
+
+
+cat("Answer for part 1:", answerP1, "\n")
+cat("Answer for part 2:", answerP2, "\n")
 
 
