@@ -33,12 +33,6 @@ while(!(i %in% visitedSites)) {
     visitedSites <- c(visitedSites, i)
     tmp <- commandDF[i, ]
 
-    message("Line:    ", i)
-    message("accVal:  ", accVal)
-    message("command: ", tmp[["command"]])
-    message("---")
-
-
     if (tmp[["command"]] != "jmp") {
         if (tmp[["command"]] == "acc") {
             if (tmp[["dir"]] == "+") {
@@ -60,5 +54,54 @@ while(!(i %in% visitedSites)) {
 
 
 
+# Part 2 ----
+read_delim(
+    file = "input/08.txt",
+    delim = " ",
+    col_names = c("instr", "value"),
+    col_types = "cd"
+) %>%
+    mutate(
+        visits = 0
+    ) -> asm
 
+orig_program <- asm
 
+for (run in seq_len(nrow(asm))) {
+
+    asm <- orig_program
+
+    curr <- 1
+    accumulator <-  0
+
+    switch(
+        asm$instr[run],
+        "acc" = "acc",
+        "nop" = "jmp",
+        "jmp" = "nop"
+    ) -> asm$instr[run]
+
+    while (all(asm$visits < 2)) {
+
+        asm$visits[curr] <- asm$visits[curr] + 1
+
+        switch(
+            asm$instr[curr],
+            "acc" = curr + 1,
+            "nop" = curr + 1,
+            "jmp" = curr + asm[curr,]$value
+        ) -> nxt
+
+        if (nxt > nrow(asm)) break
+
+        if ((asm$visits[curr] < 2) && (asm$instr[curr] == "acc")) {
+            accumulator <- accumulator + asm$value[curr]
+        }
+
+        curr <- nxt
+
+    }
+
+    if (all(asm$visits < 2)) break
+
+}
